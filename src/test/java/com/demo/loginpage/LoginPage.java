@@ -9,20 +9,29 @@ import org.openqa.selenium.support.PageFactory;
 public class LoginPage extends BasePage{
 
     private static final String LOGIN_PAGE_URL = "https://order.sweetgreen.com/login";
+    
+    private static final String USER_NAME_SELECTOR = "//*[contains(@id,'ember') and @type='email']";
+    private static final String PASSWORD_SELECTOR = "//*[contains(@id,'ember') and @type='password']";
+    private static final String SUBMIT_BUTTON_SELECTOR = "//*[contains(@id,'ember') and @type='submit']";
+    private static final String ACCOUNT_BUTTON_SELECTOR = "//*[contains(@class,'account-button')]";
+    
+    private static final String USER_NAME_ELEMENT_NAME = "UserName";
+    private static final String PASSWORD_ELEMENT_NAME = "Password";
+    private static final String SUBMIT_BUTTON_ELEMENT_NAME = "SubmitButton";
+    private static final String ACCOUNT_BUTTON_ELEMENT_NAME = "AccountButton";
 
-    @FindBy(xpath = "//*[contains(@id,'ember') and @type='email']")
+
+    @FindBy(xpath = USER_NAME_SELECTOR)
     private WebElement userNameInput;
 
-    @FindBy(xpath = "//*[contains(@id,'ember') and @type='password']")
+    @FindBy(xpath = PASSWORD_SELECTOR)
     private WebElement passwordInput;
     
-    @FindBy(xpath="//*[contains(@id,'ember') and @type='submit']")
+    @FindBy(xpath=SUBMIT_BUTTON_SELECTOR)
     private WebElement submitButton;
     
-    @FindBy(className="account-button")
+    @FindBy(className=ACCOUNT_BUTTON_SELECTOR)
     private WebElement accountButton;
-
-
 
     LoginPage() {
         PageFactory.initElements(driver, this);
@@ -34,15 +43,15 @@ public class LoginPage extends BasePage{
     }
 
     void checkSubmitButtonDisplay() {
-        wait.forElementToBeDisplayed(5, this.submitButton, "SubmitButton");
+        wait.forElementToBeDisplayed(5, this.submitButton, SUBMIT_BUTTON_ELEMENT_NAME);
     }
 
     void checkUserNameDisplay() {
-        wait.forElementToBeDisplayed(5, this.userNameInput, "UserName");
+        wait.forElementToBeDisplayed(5, this.userNameInput, USER_NAME_ELEMENT_NAME);
     }
     
     void checkPasswordDisplay() {
-        wait.forElementToBeDisplayed(5, this.passwordInput, "Password");
+        wait.forElementToBeDisplayed(5, this.passwordInput, PASSWORD_ELEMENT_NAME);
     }
 
     void setLoginValues(String userName , String password) {
@@ -52,12 +61,6 @@ public class LoginPage extends BasePage{
     
     void doLogin() {
     	this.submitButton.click();
-    	/*try {
-			Thread.sleep(50000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-    	this.wait.forElementToBeDisplayed(5, this.accountButton, "AccountButton");
+    	this.wait.forElementToBeDisplayed(5, this.accountButton, ACCOUNT_BUTTON_ELEMENT_NAME);
     }
 }
