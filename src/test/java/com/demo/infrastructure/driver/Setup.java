@@ -16,6 +16,8 @@ public class Setup {
 
         String browser = System.getProperty("browser");
         String driverPath = System.getProperty("driverPath");
+        System.out.println("Browser Name : "+browser);
+        System.out.println("Path : "+driverPath);
         if (browser == null) {
             browser = "chrome";
         }
