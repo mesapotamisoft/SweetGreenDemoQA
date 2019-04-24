@@ -22,18 +22,20 @@ public class Setup {
         if(driverPath==null){
         	driverPath = "src/test/resources/chromedriver";
         }
-    	System.setProperty("webdriver.chrome.driver", driverPath);
         switch (browser) {
             case "chrome":
+            	System.setProperty("webdriver.chrome.driver", driverPath);
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.addArguments("start-maximized");
                 driver = new ChromeDriver(chromeOptions);
                 break;
             case "firefox":
+            	System.setProperty("webdriver.gecko.driver",driverPath);
                 driver = new FirefoxDriver();
                 driver.manage().window().maximize();
                 break;
             case "internetexplorer":
+            	System.setProperty("webdriver.ie.driver", driverPath);
             	driver = new InternetExplorerDriver();
             	driver.manage().window().maximize();
             	break;
