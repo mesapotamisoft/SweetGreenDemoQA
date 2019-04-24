@@ -22,8 +22,8 @@
                 <version>2.19.1</version>
                 <configuration>
                     <systemPropertyVariables>
-                    <browser>${Dbrowser}</browser>
-                    <driverPath>${DdriverPath}</driverPath>
+                    <browser>${browser}</browser>
+                    <driverPath>${driverPath}</driverPath>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
