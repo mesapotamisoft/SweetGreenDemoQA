@@ -36,6 +36,7 @@ public class Setup {
             case "internetexplorer":
             	driver = new InternetExplorerDriver();
             	driver.manage().window().maximize();
+            	break;
             default:
                 throw new IllegalArgumentException("Browser \"" + browser + "\" isn't supported.");
         }
